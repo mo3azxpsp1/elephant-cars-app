@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span>Elephant Cars</span>
+</mat-toolbar>
+
+
+
+
+Brand: <input type="text" #newbrand /> <br/>
+  Country: <input type="text" #newcountry /> <br/>
+  Year: <input type="date" #newyear /> <br/>
+  Image URL: <input type="text" #newimage /> <br/>
+  <button (click)="addItem(newbrand.value, newcountry.value, newyear.value, newimage.value)">Save</button>

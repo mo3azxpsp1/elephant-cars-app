@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+
+  
+
+<mat-toolbar color="primary">
+  <span>Elephant Cars</span>
+</mat-toolbar>
+
+<button [routerLink]="['/cars/add']"> Add a new car </button> <br/>
+
+<ul>
+    <li *ngFor="let item of items | async">
+     <button [routerLink]="['/car/'+item.key]">{{ item.brand }} </button>
+    <span>{{ item.country }}</span>
+    <span>{{ item.year }}</span>
+      <button (click)="deleteItem(item.key)">Delete</button>
+    </li>
+  </ul>
+  
+
+  
+
+
+  
+</div>
+
