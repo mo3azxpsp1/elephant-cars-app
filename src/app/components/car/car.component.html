@@ -2,19 +2,14 @@
 
 	<mat-toolbar color="primary">
   <span>Elephant Cars</span>
-
-   <ul>
-
-    <li><a href="" (click)="authService.logout()">Logout</a></li>
-
-  </ul>
+  <span><a href="" (click)="authService.logout()">Logout</a></span>
 </mat-toolbar>	
 
 <p>
-  {{item.brand}} </p>
-  <img src="{{item.imageURL}}">
- <p> Country: {{item.country}}</p>
-  <p>Year: {{item.year}}</p>
+  {{brand}} </p>
+  <img src="{{imageURL}}">
+ <p> Country: {{country}}</p>
+  <p>Year: {{year}}</p>
 
 
 </div>

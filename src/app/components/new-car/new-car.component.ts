@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-new-car',
@@ -13,7 +14,7 @@ export class NewCarComponent implements OnInit {
    countriesRef: AngularFireList<any>;
    countries: Observable<any[]>;
 
-  constructor(db: AngularFireDatabase) { 
+  constructor(db: AngularFireDatabase,public authService: AuthService) { 
   	 this.itemsRef = db.list('cars');
      this.countriesRef = db.list('countries');
      this.countries = this.countriesRef.snapshotChanges().map(changes => {

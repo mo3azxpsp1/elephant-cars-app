@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase , AngularFireObject} from 'angularfire2/database';
 import { ActivatedRoute } from '@angular/router';
-
+import { AuthService } from '../../services/auth.service';
+import { FirebaseService } from '../../services/firebase.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -10,14 +11,21 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-	item: object;
-  id: string;
 
-  constructor(private db: AngularFireDatabase,  private route: ActivatedRoute) {
-    
+  id: any;
+  brand;
+  year;
+  country;
+  imageURL;
+
+  constructor(private firebaseService: FirebaseService, private db: AngularFireDatabase,  private route: ActivatedRoute, public authService: AuthService) {
+
     this.id = this.route.snapshot.params.id;   
-    this.db.object(`cars/${this.id}`).valueChanges().subscribe((result) => {
-      this.item = result
+    this.firebaseService.getCarDetails(this.id).valueChanges().subscribe(car => {
+      this.brand = car.brand;
+      this.year = car.year;
+      this.country = car.country;
+      this.imageURL = car.imageURL;
       });
     }
 

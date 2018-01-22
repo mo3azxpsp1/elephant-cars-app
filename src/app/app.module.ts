@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { FirebaseService } from './services/firebase.service';
 import { CarComponent } from './components/car/car.component';
 
 
@@ -45,7 +46,7 @@ import { CarComponent } from './components/car/car.component';
     AngularFireAuthModule,
     FormsModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
