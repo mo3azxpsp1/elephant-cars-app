@@ -10,9 +10,15 @@ import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireObject, Angu
 })
 export class NewCarComponent implements OnInit {
 	 itemsRef: AngularFireList<any>;
+   countriesRef: AngularFireList<any>;
+   countries: Observable<any[]>;
 
   constructor(db: AngularFireDatabase) { 
   	 this.itemsRef = db.list('cars');
+     this.countriesRef = db.list('countries');
+     this.countries = this.countriesRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+    });
   }
 
   addItem(newBrand: string, newCountry: string, newYear: string, newImage: string) {

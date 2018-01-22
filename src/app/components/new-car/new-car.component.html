@@ -1,12 +1,21 @@
 <mat-toolbar color="primary">
   <span>Elephant Cars</span>
+
+    <ul>
+
+    <li><a href="" (click)="authService.logout()">Logout</a></li>
+
+  </ul>
+
 </mat-toolbar>
 
+	Brand: <input type="text" #newbrand /> <br/>
+	<label for="repeatSelect"> Country: </label>
+   	<select name="repeatSelect" #newcountry>
+   	<option value="">---Please select---</option>
+  	<option *ngFor="let country of countries | async" value="{{country.name}}">{{country.name}}</option> 
+	</select> <br/>
+  	Year: <input type="date" #newyear /> <br/>
+  	Image URL: <input type="url" #newimage /> <br/>
+  	<button (click)="addItem(newbrand.value, newcountry.value, newyear.value, newimage.value)">Save</button> <br/>
 
-
-
-Brand: <input type="text" #newbrand /> <br/>
-  Country: <input type="text" #newcountry /> <br/>
-  Year: <input type="date" #newyear /> <br/>
-  Image URL: <input type="text" #newimage /> <br/>
-  <button (click)="addItem(newbrand.value, newcountry.value, newyear.value, newimage.value)">Save</button>

@@ -6,53 +6,22 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-car',
-  // templateUrl: './car.component.html',
-  template: `
-  <h1>{{ result.brand }}</h1>
-  `,
+  templateUrl: './car.component.html',
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-	// item: AngularFireObject<any>;
-  
-    id: string;
-     brand;
-    country;
-    imageUrl;
-    year;
-
+	item: object;
+  id: string;
 
   constructor(private db: AngularFireDatabase,  private route: ActivatedRoute) {
-this.id = this.route.snapshot.params.id;
-        console.log(this.id);
-    this.db.object(`cars/${this.id}`).valueChanges().subscribe((result) => console.log(result))
     
-   
-    // this.id = this.route.snapshot.params.id;
-  // this.item = this.db.object('cars'+'/'+this.id).valueChanges(); 
-  //   console.log(this.item);
+    this.id = this.route.snapshot.params.id;   
+    this.db.object(`cars/${this.id}`).valueChanges().subscribe((result) => {
+      this.item = result
+      });
     }
-
-//    getCarDetails(id){
-//      var item = this.db.object('/cars/'+id).valueChanges();
-// return item; 
-     
-// }
-
-// getCar(carKey: string) {
-//     this.item = this.db.object(`cars/${carKey}`)
-// }
 
   ngOnInit() {
         
-    // this.getCarDetails(this.id).subscribe(item =>
-    //     this.brand = item.brand,
-    //     this.country = item.country
-
-
- 
-   //  this.id = this.route.snapshot.queryParams['id'];
-  	// this.getCarDetails(this.id);
-   //  };
   }
 }

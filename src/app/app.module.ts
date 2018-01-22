@@ -8,10 +8,10 @@ import { LoginComponent } from './components/login/login.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { AppRoutes } from "./app.routes";
 import { NewCarComponent } from './components/new-car/new-car.component';
-
+import { FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
+import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { CarComponent } from './components/car/car.component';
 
@@ -43,8 +43,9 @@ import { CarComponent } from './components/car/car.component';
     AppRoutes,
     AngularFireModule.initializeApp(environment.firebase, 'elephant-cars-fea3d'),
     AngularFireAuthModule,
+    FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,12 @@
 
 <mat-toolbar color="primary">
   <span>Elephant Cars</span>
+
+   <ul>
+
+    <li><a href="" (click)="authService.logout()">Logout</a></li>
+
+  </ul>
 </mat-toolbar>
 
 <button [routerLink]="['/cars/add']"> Add a new car </button> <br/>
